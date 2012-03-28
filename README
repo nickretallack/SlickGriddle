@@ -16,7 +16,7 @@ new SlickGriddle(element, data, {width:cell_width, height:cell_height}, render_c
         It should output the literal HTML that will be used.
         left_coordinate, top_coordinate: use these to position your grid cell
         example implementation:
-        render_cell = (item, position) -> """<div style="position:absolute; top:#{position.top}, left:#{position.left}">#{item.name}</div>"
+        render_cell = (item, position) -> """<div style="position:absolute; top:#{position.top}, left:#{position.left}">#{item.name}</div>"""
 
     post_render_cell:
         Exactly like the async post render formatters in SlickGrid, only with no columnDef argument.
