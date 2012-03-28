@@ -6,7 +6,7 @@ It also supports the asynchronous post-render step.
 
 How to use:
 
-new SlickGriddle(element, data, {width:cell_width, height:cell_height}, render_cell, post_render_cell)
+grid = new SlickGriddle(element, data, {width:cell_width, height:cell_height}, render_cell, post_render_cell)
     element: a jqueried html element
     data: an array, Slick.DataView, or anything that responds to getItem(index) and getLength()
     cell_width, cell_height: size of the grid cells in pixels as integers
@@ -20,3 +20,13 @@ new SlickGriddle(element, data, {width:cell_width, height:cell_height}, render_c
 
     post_render_cell:
         Exactly like the async post render formatters in SlickGrid, only with no columnDef argument.
+
+If you resize the parent element and want SlickGriddle to react, call grid.resize()
+
+If you filter your dataView and want SlickGriddle to react, add these event handlers:
+
+dataView.onRowCountChanged.subscribe (event, args) ->
+    grid.invalidate()
+
+dataView.onRowsChanged.subscribe (event, args) ->
+    grid.invalidate()
