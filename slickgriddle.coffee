@@ -1,3 +1,5 @@
+delay = (a,b) -> setTimeout b,a
+
 class SlickGriddle
     constructor:(@container, @data, @cell_size, @render_cell, @post_render_cell) ->
         @container.css position:'absolute', top:0, bottom:0, left:0, right:0, overflow:'auto'
@@ -88,7 +90,8 @@ class SlickGriddle
             # The children of the temporary node are removed from it
             # when they are appended to another node
 
-        delay 500, => @postProcess()
+        if @post_render_cell?
+            delay 500, => @postProcess()
     
     getVisibleRange: ->
         scrollTop = @container.scrollTop()
