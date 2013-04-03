@@ -1,25 +1,32 @@
-A fast infinite thumbnail gallery based on SlickGrid.
+# SlickGriddle
+### A fast infinite thumbnail gallery based on SlickGrid.
 
 It's compatible with Slick.DataView so it also supports filtering search and other data modifications.
-
 It also supports the asynchronous post-render step.
 
-How to use:
+---
 
-grid = new SlickGriddle(element, data, {width:cell_width, height:cell_height}, render_cell, post_render_cell)
-    element: a jqueried html element
-    data: an array, Slick.DataView, or anything that responds to getItem(index) and getLength()
-    cell_width, cell_height: size of the grid cells in pixels as integers
+**How to use:**
 
-    render_cell: (item, {left:left_coordinate, top:top_coordinate}) -> some_html
-        A function that is called when a grid cell needs to be rendered.
-        It should output the literal HTML that will be used.
-        left_coordinate, top_coordinate: use these to position your grid cell
-        example implementation:
-        render_cell = (item, position) -> """<div style="position:absolute; top:#{position.top}, left:#{position.left}">#{item.name}</div>"""
+`grid = new SlickGriddle(element, data, {width:cell_width, height:cell_height}, render_cell, post_render_cell)`
 
-    post_render_cell:
-        Exactly like the async post render formatters in SlickGrid, only with no columnDef argument.
+ - **element:** a jqueried html element
+    
+ - **data:** an array, `Slick.DataView`, or anything that responds to `getItem(index)` and `getLength()`
+    
+ - **cell_width, cell_height:** size of the grid cells in pixels as integers
+    
+ - **render_cell:** (item, {left:left_coordinate, top:top_coordinate}) -> some_html
+   A function that is called when a grid cell needs to be rendered.
+   It should output the literal HTML that will be used.
+   left_coordinate, top_coordinate: use these to position your grid cell
+   example implementation:
+   `render_cell = (item, position) -> """<div style="position:absolute; top:#{position.top}, left:#{position.left}">#{item.name}</div>"""`
+
+ - **post_render_cell:**
+   Exactly like the async post render formatters in SlickGrid, only with no columnDef argument.
+
+---
 
 If you resize the parent element and want SlickGriddle to react, call grid.resize()
 
